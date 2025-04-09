@@ -1,0 +1,51 @@
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:FindFirstChild("PlayerGui")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = PlayerGui
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0.8, 0, 0.15, 0) 
+Frame.Position = UDim2.new(0.1, 0, 0.1, 0) 
+Frame.BackgroundTransparency = 0.2
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+local UIStroke = Instance.new("UIStroke")
+UIStroke.Parent = Frame
+UIStroke.Thickness = 3
+UIStroke.Color = Color3.fromRGB(255, 215, 0)
+
+local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+UITextSizeConstraint.MaxTextSize = 40
+
+local WarningLabel = Instance.new("TextLabel")
+WarningLabel.Size = UDim2.new(1, 0, 1, 0)
+WarningLabel.BackgroundTransparency = 1
+WarningLabel.TextColor3 = Color3.fromRGB(255, 215, 0)
+WarningLabel.TextStrokeTransparency = 0
+WarningLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+WarningLabel.Text = "⚠ NOTE: Sorry, you need to buy Premium to use this script. For details: discord.gg/rnX25HuTAd ⚠"
+WarningLabel.TextScaled = true
+WarningLabel.Font = Enum.Font.Arcade
+WarningLabel.Parent = Frame
+WarningLabel.TextSize = 40
+WarningLabel.TextWrapped = true
+WarningLabel.Parent = Frame
+
+local Sound = Instance.new("Sound")
+Sound.Parent = game.Workspace
+Sound.SoundId = "rbxassetid://9126542345"
+Sound.Volume = 2
+Sound:Play()
+
+task.delay(30, function()
+    for i = 1, 50 do
+        Frame.BackgroundTransparency = Frame.BackgroundTransparency + 0.02
+        WarningLabel.TextTransparency = WarningLabel.TextTransparency + 0.02
+        wait(0.05)
+    end
+    ScreenGui:Destroy()
+end)
