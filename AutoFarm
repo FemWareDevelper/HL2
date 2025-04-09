@@ -1,0 +1,29 @@
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+
+local targets = {
+    workspace.Surface["City-17"]:GetChildren()[8808],
+    workspace.Surface["City-17"]:GetChildren()[8859],
+    workspace.Surface["City-17"].cashregister01a
+}
+
+local escapeSpot = workspace.Surface["City-17"]:GetChildren()[7250]
+
+for i, register in ipairs(targets) do
+    local prompt = register:FindFirstChildWhichIsA("ProximityPrompt", true)
+
+    if prompt then
+        prompt.HoldDuration = 0
+
+        char:MoveTo(register.Position + Vector3.new(0, 3, 0))
+        wait(0.3)
+
+        fireproximityprompt(prompt)
+        print("💰 (" .. i .. ")")
+        wait(0.3)
+    else
+        warn("ProximityPrompt bulunamadı! (" .. i .. ")")
+    end
+end
+
+char:MoveTo(escapeSpot.Position + Vector3.new(0, 3, 0))
