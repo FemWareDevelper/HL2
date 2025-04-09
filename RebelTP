@@ -1,0 +1,9 @@
+local player = game.Players.LocalPlayer
+
+local targetLocker = workspace.RebelLockers:GetChildren()[4].RebelCabinet
+
+if targetLocker then
+    local targetPosition = targetLocker.Position
+    player.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+else
+end
