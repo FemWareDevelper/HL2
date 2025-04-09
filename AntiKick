@@ -1,0 +1,7 @@
+local player = game:GetService("Players").LocalPlayer
+local resetScript = player:WaitForChild("PlayerScripts"):FindFirstChild("PlayerReset")
+
+if resetScript then
+    resetScript:Destroy()
+else
+end
